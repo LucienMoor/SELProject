@@ -1,0 +1,77 @@
+@model IEnumerable<SEL.Models.Offer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            description
+        </th>
+        <th>
+            beginDate
+        </th>
+        <th>
+            endDate
+        </th>
+        <th>
+            longitude
+        </th>
+        <th>
+            latitude
+        </th>
+        <th>
+            city
+        </th>
+        <th>
+            owner
+        </th>
+        <th>
+            tag
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+        <td>
+			@item.description
+        </td>
+        <td>
+			@String.Format("{0:g}", item.beginDate)
+        </td>
+        <td>
+			@String.Format("{0:g}", item.endDate)
+        </td>
+        <td>
+			@String.Format("{0:F}", item.longitude)
+        </td>
+        <td>
+			@String.Format("{0:F}", item.latitude)
+        </td>
+        <td>
+			@item.city
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.owner).ToString()
+        </td>
+        <td>
+			@(item.tag == null ? "None" : item.tag.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

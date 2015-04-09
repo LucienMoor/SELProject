@@ -1,0 +1,63 @@
+@model SEL.Models.Offer
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.description)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.description)
+    @Html.ValidationMessageFor(model => model.description)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.beginDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.beginDate)
+    @Html.ValidationMessageFor(model => model.beginDate)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.endDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.endDate)
+    @Html.ValidationMessageFor(model => model.endDate)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.longitude)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.longitude)
+    @Html.ValidationMessageFor(model => model.longitude)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.latitude)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.latitude)
+    @Html.ValidationMessageFor(model => model.latitude)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.city)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.city)
+    @Html.ValidationMessageFor(model => model.city)
+</div>
+
+<div class="editor-label">
+    owner
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.ownerID, ((IEnumerable<SEL.Models.User>)ViewBag.Possibleowner).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.ID.ToString(),
+        Selected = (Model != null) && (option.ID == Model.ownerID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.ownerID)
+</div>

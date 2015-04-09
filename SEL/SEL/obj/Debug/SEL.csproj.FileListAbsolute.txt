@@ -31,3 +31,9 @@ C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\bin\fr\System.Web.WebPages.Razor.resourc
 C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\obj\Debug\SEL.csprojResolveAssemblyReference.cache
 C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\obj\Debug\SEL.dll
 C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\obj\Debug\SEL.pdb
+C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\bin\EntityFramework.dll
+C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\bin\EntityFramework.SqlServer.dll
+C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\bin\EntityFramework.xml
+C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\bin\EntityFramework.SqlServer.xml
+C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\obj\Debug\SEL.Migrations.init.resources
+C:\Users\lucien\Desktop\SEL\SEL\SEL\SEL\obj\Debug\SEL.csproj.GenerateResource.Cache

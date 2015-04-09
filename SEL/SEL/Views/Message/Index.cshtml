@@ -1,0 +1,53 @@
+@model IEnumerable<SEL.Models.Message>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            message
+        </th>
+        <th>
+            title
+        </th>
+        <th>
+            sender
+        </th>
+        <th>
+            dest
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+        <td>
+			@item.message
+        </td>
+        <td>
+			@item.title
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.sender).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.dest).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+

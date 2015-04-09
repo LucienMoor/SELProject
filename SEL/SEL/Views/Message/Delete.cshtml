@@ -1,0 +1,32 @@
+@model SEL.Models.Message
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Message</legend>
+
+    <div class="display-label">message</div>
+    <div class="display-field">@Model.message</div>
+
+    <div class="display-label">title</div>
+    <div class="display-field">@Model.title</div>
+
+    <div class="display-label">sender</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.sender).ToString()</div>
+
+    <div class="display-label">dest</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.dest).ToString()</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

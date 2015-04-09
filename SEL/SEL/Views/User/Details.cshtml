@@ -1,0 +1,47 @@
+@model SEL.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">firstname</div>
+    <div class="display-field">@Model.firstname</div>
+
+    <div class="display-label">lastname</div>
+    <div class="display-field">@Model.lastname</div>
+
+    <div class="display-label">pseudo</div>
+    <div class="display-field">@Model.pseudo</div>
+
+    <div class="display-label">birthDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.birthDate)</div>
+
+    <div class="display-label">longitude</div>
+    <div class="display-field">@String.Format("{0:F}", Model.longitude)</div>
+
+    <div class="display-label">latitude</div>
+    <div class="display-field">@String.Format("{0:F}", Model.latitude)</div>
+
+    <div class="display-label">phone</div>
+    <div class="display-field">@Model.phone</div>
+
+    <div class="display-label">email</div>
+    <div class="display-field">@Model.email</div>
+
+    <div class="display-label">password</div>
+    <div class="display-field">@Model.password</div>
+
+    <div class="display-label">city</div>
+    <div class="display-field">@Model.city</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

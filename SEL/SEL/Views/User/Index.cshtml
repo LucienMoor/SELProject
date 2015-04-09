@@ -1,0 +1,89 @@
+@model IEnumerable<SEL.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            firstname
+        </th>
+        <th>
+            lastname
+        </th>
+        <th>
+            pseudo
+        </th>
+        <th>
+            birthDate
+        </th>
+        <th>
+            longitude
+        </th>
+        <th>
+            latitude
+        </th>
+        <th>
+            phone
+        </th>
+        <th>
+            email
+        </th>
+        <th>
+            password
+        </th>
+        <th>
+            city
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+        <td>
+			@item.firstname
+        </td>
+        <td>
+			@item.lastname
+        </td>
+        <td>
+			@item.pseudo
+        </td>
+        <td>
+			@String.Format("{0:g}", item.birthDate)
+        </td>
+        <td>
+			@String.Format("{0:F}", item.longitude)
+        </td>
+        <td>
+			@String.Format("{0:F}", item.latitude)
+        </td>
+        <td>
+			@item.phone
+        </td>
+        <td>
+			@item.email
+        </td>
+        <td>
+			@item.password
+        </td>
+        <td>
+			@item.city
+        </td>
+    </tr>
+}
+
+</table>
+
+

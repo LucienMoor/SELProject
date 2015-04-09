@@ -1,0 +1,44 @@
+@model SEL.Models.Offer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Offer</legend>
+
+    <div class="display-label">description</div>
+    <div class="display-field">@Model.description</div>
+
+    <div class="display-label">beginDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.beginDate)</div>
+
+    <div class="display-label">endDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.endDate)</div>
+
+    <div class="display-label">longitude</div>
+    <div class="display-field">@String.Format("{0:F}", Model.longitude)</div>
+
+    <div class="display-label">latitude</div>
+    <div class="display-field">@String.Format("{0:F}", Model.latitude)</div>
+
+    <div class="display-label">city</div>
+    <div class="display-field">@Model.city</div>
+
+    <div class="display-label">owner</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.owner).ToString()</div>
+
+    <div class="display-label">tag</div>
+    <div class="display-field">@(Model.tag == null ? "None" : Model.tag.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+
