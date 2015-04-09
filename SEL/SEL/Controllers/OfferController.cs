@@ -28,6 +28,7 @@ namespace SEL.Controllers
         public ViewResult Details(int id)
         {
             Offer offer = context.Offer.Single(x => x.ID == id);
+            @ViewBag.ownerPseudo = context.User.Find(offer.ownerID).pseudo;
             return View(offer);
         }
 
