@@ -31,7 +31,6 @@
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.birthDate)
-    @Html.ValidationMessageFor(model => model.birthDate)
 </div>
 
 <div class="editor-label">
@@ -39,7 +38,6 @@
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.longitude)
-    @Html.ValidationMessageFor(model => model.longitude)
 </div>
 
 <div class="editor-label">
@@ -47,7 +45,6 @@
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.latitude)
-    @Html.ValidationMessageFor(model => model.latitude)
 </div>
 
 <div class="editor-label">
@@ -55,7 +52,6 @@
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.phone)
-    @Html.ValidationMessageFor(model => model.phone)
 </div>
 
 <div class="editor-label">
@@ -70,7 +66,7 @@
     @Html.LabelFor(model => model.password)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.password)
+    @Html.PasswordFor(model => model.password)
     @Html.ValidationMessageFor(model => model.password)
 </div>
 
@@ -79,6 +75,5 @@
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.city)
-    @Html.ValidationMessageFor(model => model.city)
 </div>
 
