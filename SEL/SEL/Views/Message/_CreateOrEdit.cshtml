@@ -31,12 +31,5 @@
 </div>
 <div class="editor-label">
     dest
-</div>
-<div class="editor-field">
-    @Html.DropDownListFor(model => model.destID, ((IEnumerable<SEL.Models.User>)ViewBag.Possibledest).Select(option => new SelectListItem {
-        Text = Html.DisplayTextFor(_ => option).ToString(), 
-        Value = option.ID.ToString(),
-        Selected = (Model != null) && (option.ID == Model.destID)
-    }), "Choose...")
-    @Html.ValidationMessageFor(model => model.destID)
+    @Html.TextBox("dest")
 </div>
