@@ -9,7 +9,7 @@ using SEL.Models;
 using SEL.DAL;
 
 namespace SEL.Controllers
-{   
+{
     public class OfferController : Controller
     {
         private SelContext context = new SelContext();
@@ -39,7 +39,7 @@ namespace SEL.Controllers
         {
             ViewBag.Possibleowner = context.User;
             return View();
-        } 
+        }
 
         //
         // POST: /Offer/Create
@@ -48,21 +48,21 @@ namespace SEL.Controllers
         public ActionResult Create(Offer offer)
         {
             User user = Session["login"] as User;
-            offer.ownerID = user.ID ;
+            offer.ownerID = user.ID;
             if (ModelState.IsValid)
             {
                 context.Offer.Add(offer);
                 context.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             ViewBag.Possibleowner = context.User;
             return View(offer);
         }
-        
+
         //
         // GET: /Offer/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             Offer offer = context.Offer.Single(x => x.ID == id);
@@ -88,7 +88,7 @@ namespace SEL.Controllers
 
         //
         // GET: /Offer/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             Offer offer = context.Offer.Single(x => x.ID == id);
@@ -107,9 +107,17 @@ namespace SEL.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Search(string search)
+        {
+            List<Offer> offersSearch = context.Offer.Where(o => o.description == search || o.name == search).ToList();
+
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
-            if (disposing) {
+            if (disposing)
+            {
                 context.Dispose();
             }
             base.Dispose(disposing);
