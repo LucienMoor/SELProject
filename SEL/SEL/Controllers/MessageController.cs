@@ -48,6 +48,8 @@ namespace SEL.Controllers
         public ActionResult Create(Message msg,string dest)
         {
             User destUser = context.User.Where(m=>m.pseudo==dest).First();
+            User user = Session["login"] as User;
+            msg.senderID = user.ID;
             msg.destID = destUser.ID;
             if(msg.title !=null && msg.message!=null && msg.senderID !=0 && msg.destID!= 0)
             {

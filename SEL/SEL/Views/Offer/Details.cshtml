@@ -25,7 +25,16 @@
     <div class="display-field">@ViewBag.ownerPseudo</div>
 
     <div class="display-label h3">tag :</div>
-    <div class="display-field">@(Model.tag == null ? "None" : Model.tag.Count.ToString())</div>
+    <p>
+        @{
+            foreach (string str in @ViewBag.tagList)
+            {
+
+                @str<br/>
+
+            }
+        }
+    </p>
 </fieldset>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
