@@ -45,18 +45,27 @@ namespace SEL.Controllers
         // POST: /Message/Create
 
         [HttpPost]
-        public ActionResult Create(Message message)
+        public ActionResult Create(Message msg,string dest)
         {
-            if (ModelState.IsValid)
+            User destUser = context.User.Where(m=>m.pseudo==dest).First();
+            msg.destID = destUser.ID;
+            if(msg.title !=null && msg.message!=null && msg.senderID !=0 && msg.destID!= 0)
             {
-                context.Message.Add(message);
+                context.Message.Add(msg);
+                context.SaveChanges();
+                return RedirectToAction("Index"); 
+            }
+ 
+            /*if (ModelState.IsValid)
+            {
+                context.Message.Add(msg);
                 context.SaveChanges();
                 return RedirectToAction("Index");  
-            }
-
+            }*/
+            
             ViewBag.Possiblesender = context.User;
             ViewBag.Possibledest = context.User;
-            return View(message);
+            return View(msg);
         }
         
         //
@@ -74,17 +83,17 @@ namespace SEL.Controllers
         // POST: /Message/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Message message)
+        public ActionResult Edit(Message msg)
         {
             if (ModelState.IsValid)
             {
-                context.Entry(message).State = EntityState.Modified;
+                context.Entry(msg).State = EntityState.Modified;
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.Possiblesender = context.User;
             ViewBag.Possibledest = context.User;
-            return View(message);
+            return View(msg);
         }
 
         //
