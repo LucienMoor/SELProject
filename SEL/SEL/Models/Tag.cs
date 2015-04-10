@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SEL.DAL;
 
 namespace SEL.Models
 {
@@ -11,5 +12,6 @@ namespace SEL.Models
         public int ID { get; set; }
         public string tag { get; set; }
         public virtual ICollection<OfferTag> offer { get; set; }
+
     }
 }

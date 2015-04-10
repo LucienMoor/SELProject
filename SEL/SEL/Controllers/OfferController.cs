@@ -38,6 +38,7 @@ namespace SEL.Controllers
         public ActionResult Create()
         {
             ViewBag.Possibleowner = context.User;
+            ViewBag.tagList = context.Tag.ToList().Select(m=>m.tag);
             return View();
         } 
 
@@ -45,14 +46,27 @@ namespace SEL.Controllers
         // POST: /Offer/Create
 
         [HttpPost]
-        public ActionResult Create(Offer offer)
+        public ActionResult Create(Offer offer,string[] tagList)
         {
             User user = Session["login"] as User;
             offer.ownerID = user.ID ;
             if (ModelState.IsValid)
             {
+
                 context.Offer.Add(offer);
                 context.SaveChanges();
+                foreach (string strTag in tagList)
+                {
+                    if(strTag!="")
+                    { 
+                        Tag tag = context.Tag.Where(m => m.tag == strTag).First();
+                        OfferTag newEntry = new OfferTag();
+                        newEntry.tagID = tag.ID;
+                        newEntry.offerID = offer.ID;
+                        context.OfferTag.Add(newEntry);
+                        context.SaveChanges();
+                    }
+                }
                 return RedirectToAction("Index");  
             }
 
