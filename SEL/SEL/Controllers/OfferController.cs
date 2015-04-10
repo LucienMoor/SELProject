@@ -111,7 +111,7 @@ namespace SEL.Controllers
         {
             List<Offer> offersSearch = context.Offer.Where(o => o.description == search || o.name == search).ToList();
 
-            return View();
+            return View(offersSearch);
         }
 
         protected override void Dispose(bool disposing)

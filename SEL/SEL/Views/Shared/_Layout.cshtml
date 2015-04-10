@@ -21,21 +21,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("My messages", "Index", "Message")</li>
                     <li>@Html.ActionLink("All offers", "Index", "Offer")</li>
                     <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (Session["login"]==null)
+                </ul>
+                <div class="navbar-right">
+                    @if (Session["login"] == null)
                     {
-                        <li>@Html.Partial("_login")</li>
+                        @Html.Partial("_login")
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                        @Html.ActionLink("My messages", "Index", "Message")
+                        @Html.ActionLink("Logout", "Logout", "Home")
                     }
-                    
-                    
-                </ul>
+                </div>
             </div>
         </div>
     </div>
