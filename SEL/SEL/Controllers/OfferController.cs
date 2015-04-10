@@ -47,7 +47,8 @@ namespace SEL.Controllers
         [HttpPost]
         public ActionResult Create(Offer offer)
         {
-            offer.ownerID = 3;
+            User user = Session["login"] as User;
+            offer.ownerID = user.ID ;
             if (ModelState.IsValid)
             {
                 context.Offer.Add(offer);

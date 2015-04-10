@@ -44,14 +44,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @if (Session["login"]!=null)
-            { 
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            }
-        </td>
+           
         <td>
 			@item.description
         </td>
@@ -76,6 +69,12 @@
         <td>
 			@(item.tag == null ? "None" : item.tag.Count.ToString())
         </td>
+        @if (Session["login"] != null)
+        {
+            <td>@Html.ActionLink("Edit", "Edit", new { id = item.ID })</td>
+            <td>@Html.ActionLink("Details", "Details", new { id = item.ID })</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = item.ID })</td>
+        }
     </tr>
 }
 
