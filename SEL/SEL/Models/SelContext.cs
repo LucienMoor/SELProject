@@ -17,8 +17,8 @@ namespace SEL.DAL
         }
         //public DbSet<User> users { get; set; }
         //public DbSet<Message> message { get; set; }
-        public DbSet<Tag> tags { get; set; }
-        public DbSet<OfferTag> offerTag { get; set; }
+        public DbSet<Tag> Tag { get; set; }
+        public DbSet<OfferTag> OfferTag { get; set; }
         //public DbSet<Offer> offer { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
