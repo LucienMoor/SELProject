@@ -1,7 +1,5 @@
 ﻿@{Html.BeginForm("Login", "Home");}
-    @Html.Label("Email")
-    @Html.TextBox("email")
-    @Html.Label("Password")
-    @Html.Password("password")
-    <button type="submit">Save</button>
+    @Html.TextBox("email", "Email")
+    @Html.Password("password", "password")
+    <button type="submit" class="btn btn-default">Login</button>
 @{Html.EndForm();}

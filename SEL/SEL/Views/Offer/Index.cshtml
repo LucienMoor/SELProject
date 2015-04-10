@@ -1,11 +1,11 @@
 @model IEnumerable<SEL.Models.Offer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All offers";
 }
 
 <h2>Index</h2>
-
+@Html.Partial("_searchBar", Model)
 <p>
     @if(Session["login"]!=null)
     {
@@ -16,6 +16,10 @@
 <table>
     <tr>
         <th></th>
+        <th>
+            name
+        </th>
+
         <th>
             description
         </th>
@@ -44,6 +48,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @item.name
+        </td>
            
         <td>
 			@item.description
