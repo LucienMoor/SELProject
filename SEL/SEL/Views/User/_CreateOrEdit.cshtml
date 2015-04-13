@@ -62,4 +62,47 @@
 <div class="editor-field">
     @Html.EditorFor(model => model.city)
 </div>
+<form>
+    <fieldset class="details">
 
+        <input id="city" name="name" type="hidden" value="" data-geo="name" />
+
+        <input id="lat" name="latitude" type="hidden" value="" data-geo="lat" />
+
+        <input id="lng" name="longitude" type="hidden" value="" data-geo="lng" />
+
+        <input id="location " name="location" type="hidden" value="" />
+
+        <input id="country" name="country" type="hidden" value="" />
+
+    </fieldset>
+</form>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+<script src="~/Scripts/jquery.geocomplete.js"></script>
+<script>
+
+    $(document).ready(function ($) {
+        $(function ($) {
+
+            $("#city").geocomplete({
+                details: ".details",
+                detailsAttribute: "data-geo",
+                types: ["geocode", "establishment"],
+            });
+            $("#city").geocomplete(function () {
+                initialize();
+            });
+
+            $("#city").blur(function () {
+                $("#geocomplete").trigger("geocode");
+                initialize();
+            });
+            $("#examples a").click(function () {
+                $("#geocomplete").val($(this).text()).trigger("geocode");
+                return false;
+            })
+        });
+
+    });
+</script>
