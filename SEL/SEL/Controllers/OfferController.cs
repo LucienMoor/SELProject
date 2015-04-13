@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using SEL.Models;
 using SEL.DAL;
+using System.Data.Entity.SqlServer;
 
 namespace SEL.Controllers
 {
@@ -123,8 +124,7 @@ namespace SEL.Controllers
 
         public ActionResult Search(string search)
         {
-            List<Offer> offersSearch = context.Offer.Where(o => o.description == search || o.name == search).ToList();
-
+            List<Offer> offersSearch = context.Offer.Where(o => o.description.Contains(search) || o.name.Contains(search)).ToList();
             return View(offersSearch);
         }
 
