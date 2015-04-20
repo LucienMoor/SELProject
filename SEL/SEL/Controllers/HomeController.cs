@@ -12,9 +12,19 @@ namespace SEL.Controllers
     public class HomeController : Controller
     {
         private SelContext sel = new SelContext();
-
         public ActionResult Index()
         {
+            var tmp = sel.Set<Offer>().ToArray();
+            List<double> longitude = new List<double>();
+            List<double> latitude = new List<double>();
+            foreach(Offer o in tmp)
+            {
+                longitude.Add(o.longitude);
+                latitude.Add(o.latitude);
+            }
+            @ViewBag.nbOffer = sel.Set<Offer>().ToList().Count;
+            @ViewBag.longitude = longitude;
+            @ViewBag.latitude = latitude;
             return View();
         }
 
