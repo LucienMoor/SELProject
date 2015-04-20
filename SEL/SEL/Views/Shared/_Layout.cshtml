@@ -24,15 +24,19 @@
                     <li>@Html.ActionLink("All offers", "Index", "Offer")</li>
                     <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Session["login"] != null)
+                    {
+                        <li>@Html.ActionLink("My messages", "Index", "Message")</li>
+                    }
                 </ul>
                 <div class="navbar-right">
                     @if (Session["login"] == null)
                     {
                         @Html.Partial("_login")
+                        
                     }
                     else
                     {
-                        @Html.ActionLink("My messages", "Index", "Message")
                         @Html.ActionLink("Logout", "Logout", "Home")
                     }
                 </div>

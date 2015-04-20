@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "All offers";
 }
+@{}
 
 <h2>Index</h2>
 @Html.Partial("_searchBar", Model)
@@ -13,78 +14,68 @@
     }
     
 </p>
-<table>
-    <tr>
-        <th></th>
-        <th>
-            name
-        </th>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Begin</th>
+                <th>End</th>
+                <th>Location</th>
+                <th>Owner</th>
+            </tr>
+        </thead>
 
-        <th>
-            description
-        </th>
-        <th>
-            beginDate
-        </th>
-        <th>
-            endDate
-        </th>
-        <th>
-            longitude
-        </th>
-        <th>
-            latitude
-        </th>
-        <th>
-            city
-        </th>
-        <th>
-            owner
-        </th>
-        <th>
-            tag
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @item.name
-        </td>
-           
-        <td>
-			@item.description
-        </td>
-        <td>
-			@String.Format("{0:g}", item.beginDate)
-        </td>
-        <td>
-			@String.Format("{0:g}", item.endDate)
-        </td>
-        <td>
-			@String.Format("{0:F}", item.longitude)
-        </td>
-        <td>
-			@String.Format("{0:F}", item.latitude)
-        </td>
-        <td>
-			@item.city
-        </td>
-        <td>
-			@Html.DisplayTextFor(_ => item.owner).ToString()
-        </td>
-        <td>
-			@(item.tag == null ? "None" : item.tag.Count.ToString())
-        </td>
-        @if (Session["login"] != null)
+        @foreach (var item in Model)
         {
-            <td>@Html.ActionLink("Edit", "Edit", new { id = item.ID })</td>
-            <td>@Html.ActionLink("Details", "Details", new { id = item.ID })</td>
-            <td>@Html.ActionLink("Delete", "Delete", new { id = item.ID })</td>
+            <tr>
+                <td>
+                    @item.name
+                </td>
+
+                <td>
+                    @item.description
+                </td>
+                <td>
+                    @String.Format("{0:g}", item.beginDate)
+                </td>
+                <td>
+                    @String.Format("{0:g}", item.endDate)
+                </td>
+                <td>
+                    @item.city
+                </td>
+                <td>
+                    @item.getOwnerPseudo(item.ownerID)
+                </td>
+                @if (Session["login"] != null)
+                {
+                    <td>
+                        <a href="@Url.Action("Details", new { id=item.ID})">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                        </a>
+                    </td>
+                    SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
+                    if (current.ID == item.ownerID)
+                    {
+                        <td>
+                            <a href="@Url.Action("Edit", new { id=item.ID})">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="@Url.Action("Delete", new { id=item.ID})">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </td>
+                    }
+
+                }
+            </tr>
         }
-    </tr>
-}
 
-</table>
+    </table>
 
-
+</div>

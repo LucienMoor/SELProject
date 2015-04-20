@@ -29,5 +29,6 @@ namespace SEL.Models
         [Required(ErrorMessage = "Password required")]
         public string password { get; set; }
         public string city { get; set; }
+
     }
 }
