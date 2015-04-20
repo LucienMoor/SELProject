@@ -17,18 +17,6 @@
     @Html.EditorFor(model => model.title)
     @Html.ValidationMessageFor(model => model.title)
 </div>
-
-<div class="editor-label">
-    sender
-</div>
-<div class="editor-field">
-    @Html.DropDownListFor(model => model.senderID, ((IEnumerable<SEL.Models.User>)ViewBag.Possiblesender).Select(option => new SelectListItem {
-        Text = Html.DisplayTextFor(_ => option).ToString(), 
-        Value = option.ID.ToString(),
-        Selected = (Model != null) && (option.ID == Model.senderID)
-    }), "Choose...")
-    @Html.ValidationMessageFor(model => model.senderID)
-</div>
 <div class="editor-label">
     dest
     @Html.TextBox("dest")

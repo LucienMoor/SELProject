@@ -7,6 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using SEL.Models;
 using SEL.DAL;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web.Security;
 
 namespace SEL.Controllers
 {   
@@ -46,7 +49,9 @@ namespace SEL.Controllers
         public ActionResult Create(User user)
         {
             if (ModelState.IsValid)
+            
             {
+                user.password = FormsAuthentication.HashPasswordForStoringInConfigFile(user.password,"SHA1");
                 context.User.Add(user);
                 context.SaveChanges();
                 return RedirectToAction("Index");  

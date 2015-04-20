@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace SEL.Controllers
 {
@@ -33,6 +34,7 @@ namespace SEL.Controllers
 
         public ActionResult Login(string password, string email)
         {
+            password = FormsAuthentication.HashPasswordForStoringInConfigFile(password, "SHA1");
             User user = sel.User.Where(u => u.password == password && u.email == email).FirstOrDefault();
             if(user == null)
             {

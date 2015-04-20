@@ -30,9 +30,16 @@ namespace SEL.Controllers
         {
             Offer offer = context.Offer.Single(x => x.ID == id);
             @ViewBag.ownerPseudo = context.User.Find(offer.ownerID).pseudo;
+            List<OfferTag> otList = context.OfferTag.Where(m=>m.offerID==offer.ID).ToList();
+            List<string> tagName = new List<string>();
+            foreach(OfferTag ot in otList)
+            {
+                tagName.Add(context.Tag.Find(ot.tagID).tag);
+            }
+            @ViewBag.tagList = tagName;
             return View(offer);
         }
-
+        
         //
         // GET: /Offer/Create
 
