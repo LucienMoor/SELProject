@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SEL.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,7 +26,14 @@ namespace SEL.Models
         public string city { get; set; }
         public string name { get; set; }
         public virtual User owner { get; set; }
-
         public virtual ICollection<OfferTag> tag { get; set; }
+
+        private SelContext context = new SelContext();
+
+        public String getOwnerPseudo(int ownerId)
+        {
+            User owner = context.User.Single(x => x.ID == ownerId);
+            return owner.pseudo;
+        }
     }
 }

@@ -4938,6 +4938,11 @@ a.list-group-item.active > .badge,
   background-color: #eeeeee;
 }
 
+.transparent {
+  background-color: #428bca !important;
+}
+
+
 .jumbotron h1 {
   line-height: 1;
   color: inherit;
