@@ -54,7 +54,7 @@ namespace SEL.Controllers
                 user.password = FormsAuthentication.HashPasswordForStoringInConfigFile(user.password,"SHA1");
                 context.User.Add(user);
                 context.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             return View(user);

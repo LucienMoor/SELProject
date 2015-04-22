@@ -12,48 +12,43 @@
         @Html.ActionLink("Create New", "Create")
     }
 </p>
-<table>
-    <tr>
-        <th></th>
-        <th>
-            message
-        </th>
-        <th>
-            title
-        </th>
-        <th>
-            sender
-        </th>
-        <th>
-            dest
-        </th>
-    </tr>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Message</th>
+                <th>From</th>
+                <th>To</th>
+            </tr>
+        </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-           @if (Session["login"] != null)
-           {
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-            @Html.ActionLink("Details", "Details", new { id = item.ID })
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-           }
-        </td>
-        <td>
-			@item.message
-        </td>
-        <td>
-			@item.title
-        </td>
-        <td>
-			@Html.DisplayTextFor(_ => item.sender).ToString()
-        </td>
-        <td>
-			@Html.DisplayTextFor(_ => item.dest).ToString()
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.title
+                </td>
+                <td>
+                    @item.message
+                </td>
+                <td>
+                    @Html.DisplayTextFor(_ => item.sender).ToString()
+                </td>
+                <td>
+                    @Html.DisplayTextFor(_ => item.dest).ToString()
+                </td>
+                @if (Session["login"] != null)
+                {
+                    <td>
+                        <a href="@Url.Action("Details", new { id=item.ID})">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                        </a>
+                    </td>
+                }
+            </tr>
+        }
 
-</table>
-
+    </table>
+</div>
 
