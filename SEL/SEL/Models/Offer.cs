@@ -25,6 +25,7 @@ namespace SEL.Models
         public int ownerID { get; set; }
         public string city { get; set; }
         public string name { get; set; }
+        public string picture { get; set;}
         public virtual User owner { get; set; }
         public virtual ICollection<OfferTag> tag { get; set; }
 
