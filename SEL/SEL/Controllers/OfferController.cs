@@ -114,8 +114,15 @@ namespace SEL.Controllers
         // POST: /Offer/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Offer offer, string[] tagList)
+        public ActionResult Edit(Offer offer, string[] tagList, HttpPostedFileBase file)
         {
+            if (file != null)
+            {
+                string filePath = Path.Combine(Server.MapPath("~/img/"), Path.GetFileName(file.FileName));
+                file.SaveAs(filePath);
+                offer.picture = "~/img/" + file.FileName;
+
+            }
             User user = Session["login"] as User;
             offer.ownerID = user.ID;
             if (ModelState.IsValid)
