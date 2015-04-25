@@ -181,6 +181,7 @@ namespace SEL.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Offer offer = context.Offer.Single(x => x.ID == id);
+            context.OfferTag.RemoveRange(offer.tag);
             context.Offer.Remove(offer);
             context.SaveChanges();
             return RedirectToAction("Index");
