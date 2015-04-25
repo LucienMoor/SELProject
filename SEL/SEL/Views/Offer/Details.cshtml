@@ -4,11 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
 <fieldset>
-    <legend>Offer</legend>
-    <div class="pull-left">
+    <legend>@Model.name</legend>
+    <div class="pull-right">
+        
         <div class="display-label h3">description :</div>
         <div class="display-field">@Model.description</div>
 
@@ -36,7 +36,15 @@
             }
         </p>
     </div>
-    <div id="googleMap" style="width:500px;height:380px;" class="pull-right"></div>
+    <div class="top-left">
+        @if (Model.picture != null)
+        {
+        <div class="display-field"><img src="@Url.Content(Model.picture)" alt="image" class="img-responsive img-thumbnail" style="margin-bottom:10px;" /></div>
+        }
+    </div>
+    
+    
+    <div id="googleMap" style="width:500px;height:380px;" class="bottom-left"></div>
 </fieldset>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>

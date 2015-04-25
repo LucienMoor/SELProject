@@ -9,50 +9,49 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("SEL", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("All offers", "Index", "Offer")</li>
-                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (Session["login"] != null)
-                    {
-                        <li>@Html.ActionLink("My messages", "Index", "Message")</li>
-                    }
-                </ul>
-                <div class="navbar-right">
-                    @if (Session["login"] == null)
-                    {
-                        @Html.Partial("_login")
-                        
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Logout", "Logout", "Home")
-                    }
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("SEL", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("All offers", "Index", "Offer")</li>
+                        <li>@Html.ActionLink("À propos de", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        @if (Session["login"] != null)
+                        {
+                            <li>@Html.ActionLink("My messages", "Index", "Message")</li>
+                        }
+                    </ul>
+                    <div class="navbar-right">
+                        @if (Session["login"] == null)
+                        {
+                            @Html.Partial("_login")
+
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Logout", "Logout", "Home")
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <div class="container body-content">
+            @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        </div>
+        <div class="panel-footer bottom">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>

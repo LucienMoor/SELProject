@@ -41,6 +41,12 @@
     @Html.EditorFor(model => model.city)
     @Html.ValidationMessageFor(model => model.city)
 </div>
+<div class="editor-label">
+    <label for="file">Upload Image:</label>
+</div>
+<div class="editor-field">    
+    <input type="file" name="file" id="file" />
+</div>
 <div id="tag">
     @for (int i = 0; i < 10; i++)
     {

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using SEL.Models;
 using SEL.DAL;
 using System.Data.Entity.SqlServer;
+using System.IO;
 
 namespace SEL.Controllers
 {
@@ -54,10 +55,18 @@ namespace SEL.Controllers
         // POST: /Offer/Create
 
         [HttpPost]
-        public ActionResult Create(Offer offer,string[] tagList)
+        public ActionResult Create(Offer offer, string[] tagList, HttpPostedFileBase file)
         {
             User user = Session["login"] as User;
             offer.ownerID = user.ID;
+            if (file != null)
+            {
+                string filePath = Path.Combine(Server.MapPath("~/img/"), Path.GetFileName(file.FileName));
+                file.SaveAs(filePath);
+                offer.picture = "~/img/" + file.FileName;
+
+            }
+
             if (ModelState.IsValid)
             {
 
@@ -75,6 +84,7 @@ namespace SEL.Controllers
                         context.SaveChanges();
                     }
                 }
+                
                 return RedirectToAction("Index");  
             }
 

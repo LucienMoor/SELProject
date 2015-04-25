@@ -32,3 +32,9 @@ textarea {
     left:0;
     z-index: -1;
 }
+.offer{
+    border: 2px solid #FF0066;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+}
