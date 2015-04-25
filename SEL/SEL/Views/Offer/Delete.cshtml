@@ -4,38 +4,28 @@
     ViewBag.Title = "Delete";
 }
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="detailfont">Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>Offer</legend>
+    <legend class="font h2">@Model.name</legend>
 
-    <div class="display-label detailfont h3">description</div>
+    <div class="display-label detailfont h3">Description</div>
     <div class="display-field font h4">@Model.description</div>
 
-    <div class="display-label detailfont h3">beginDate</div>
+    <div class="display-label detailfont h3">Start</div>
     <div class="display-field font h4">@String.Format("{0:g}", Model.beginDate)</div>
 
-    <div class="display-label detailfont h3">endDate</div>
+    <div class="display-label detailfont h3">End</div>
     <div class="display-field font h4">@String.Format("{0:g}", Model.endDate)</div>
 
-    <div class="display-label detailfont h3">longitude</div>
-    <div class="display-field font h4">@String.Format("{0:F}", Model.longitude)</div>
-
-    <div class="display-label detailfont h3">latitude</div>
-    <div class="display-field font h4">@String.Format("{0:F}", Model.latitude)</div>
-
-    <div class="display-label detailfont h3">city</div>
+    <div class="display-label detailfont h3">City</div>
     <div class="display-field font h4">@Model.city</div>
 
-    <div class="display-label detailfont h3">owner</div>
-    <div class="display-field font h4">@Html.DisplayTextFor(_ => Model.owner).ToString()</div>
-
-    <div class="display-label detailfont h3">tag</div>
+    <div class="display-label detailfont h3">Tag</div>
     <div class="display-field font h4">@(Model.tag == null ? "None" : Model.tag.Count.ToString())</div>
 </fieldset>
 @using (Html.BeginForm()) {
-    <p>
+    <p class="font h4">
         <input type="submit" value="Delete" /> |
         @Html.ActionLink("Back to List", "Index")
     </p>

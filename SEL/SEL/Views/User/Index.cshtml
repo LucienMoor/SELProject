@@ -3,34 +3,48 @@
 @{
     ViewBag.Title = "Index";
 }
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+<h2 class="font">Users</h2>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div class="table-responsive">
     <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th>Pseudo</th>
-                <th>City</th>
+                <th class="detailfont h4">Pseudo</th>
+                <th class="detailfont h4">City</th>
+                <th></th>
             </tr>
         </thead>
 
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="font h4">
                     @item.pseudo
                 </td>
-                <td>
+                <td class="font h4">
                     @item.city
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    @if (Session["login"] != null)
+                    {
+                        <a href="@Url.Action("Details", new { id=item.ID})">
+                            <i class="glyphicon glyphicon-eye-open h4"></i>
+                        </a>
+
+                        SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
+                        if (current.ID == item.ID)
+                        {
+                            <a href="@Url.Action("Edit", new { id=item.ID})">
+                                <i class="glyphicon glyphicon-pencil h4"></i>
+                            </a>
+
+                            <a href="@Url.Action("Delete", new { id=item.ID})">
+                                <i class="glyphicon glyphicon-trash h4"></i>
+                            </a>
+                        }
+
+                    }
                 </td>
             </tr>
         }

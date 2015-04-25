@@ -14,7 +14,7 @@
 </div>
 <div class="editor-field">
     <p class="detailfont h5">@ViewBag.destUserPseudo</p>
-    @Html.TextAreaFor(model => model.message, new { htmlAttributes = new { @class = "form-control"} })
+    @Html.TextAreaFor(model => model.message, new { @class = "form-control"})
     @Html.ValidationMessageFor(model => model.message)
 </div>
 <div class="editor-label detailfont h4">

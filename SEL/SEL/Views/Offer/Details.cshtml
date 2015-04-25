@@ -6,7 +6,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 
 <fieldset>
-    <legend class="detailfont">@Model.name</legend>
+    <legend class="detailfont h1">@Model.name</legend>
     <div class="col-md-8">
         
         <div class="display-label detailfont h2">Description :</div>
@@ -22,27 +22,38 @@
         <div class="display-field font h3">@Model.city</div>
 
         <div class="display-label detailfont h2">Owner :</div>
-        <div class="display-field font h3">@ViewBag.ownerPseudo</div>
+        <div class="display-field font h3"><a href="@Url.Action("Details", "User", new { id=Model.ownerID})">@ViewBag.ownerPseudo</a></div>
+        
 
-        <div class="display-label detailfont h2">Tag :</div>
-        <p>
-                        @{
-                            foreach (string str in @ViewBag.tagList)
-                            {
+            <div class="display-label detailfont h2">Tag :</div>
+            <p>
+                @{
+                    foreach (string str in @ViewBag.tagList)
+                    {
 
-                                <div class="display-field font h3">
-                                    @str
-                                </div><br />
+                        <div class="display-field font h3">
+                            @str
+                        </div><br />
 
                     }
-                    }
-        </p>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-            @Html.ActionLink("Back to List", "Index") |
-            @Html.ActionLink("Contact", "Create", "Message", new { destUserPseudo = Model.owner.pseudo }, null)
-        </p>
-    </div>
+                }
+            </p>
+            <p class="font h4">
+                @{
+                    SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
+                }
+                @if (current.ID == Model.ownerID)
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+                    <label>|</label>
+                    @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+                    <label>|</label>
+                }
+
+                @Html.ActionLink("Back to List", "Index") <label>|</label>
+                @Html.ActionLink("Contact owner", "Create", "Message", new { destUserPseudo = Model.owner.pseudo }, null)
+            </p>
+</div>
     <div class="col-md-4">
         @if (Model.picture != null)
         {

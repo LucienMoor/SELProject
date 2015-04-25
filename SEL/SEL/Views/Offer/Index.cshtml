@@ -5,14 +5,15 @@
     ViewBag.Title = "All offers";
 }
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-<h2>Index</h2>
+<h2 class="font">Offers index</h2>
 @Html.Partial("_searchBar", Model)
-<p>
-    @if(Session["login"]!=null)
+<p class="font h4">
+    @if (Session["login"] != null)
     {
-        @Html.ActionLink("Create New", "Create")
+        <i class="glyphicon glyphicon-plus h5"></i>
+        @Html.ActionLink("Add a new offer", "Create")
     }
-    
+
 </p>
     @foreach (var item in Model)
     {
@@ -28,18 +29,18 @@
                 @if (Session["login"] != null)
                 {
                         <a href="@Url.Action("Details", new { id=item.ID})">
-                            <i class="glyphicon glyphicon-eye-open"></i>
+                            <i class="glyphicon glyphicon-eye-open h4"></i>
                         </a>
 
                     SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
                     if (current.ID == item.ownerID)
                     {
                             <a href="@Url.Action("Edit", new { id=item.ID})">
-                                <i class="glyphicon glyphicon-pencil"></i>
+                                <i class="glyphicon glyphicon-pencil h4"></i>
                             </a>
  
                             <a href="@Url.Action("Delete", new { id=item.ID})">
-                                <i class="glyphicon glyphicon-trash"></i>
+                                <i class="glyphicon glyphicon-trash h4"></i>
                             </a>
                     }
 

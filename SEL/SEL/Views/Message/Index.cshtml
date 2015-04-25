@@ -4,12 +4,13 @@
     ViewBag.Title = "Index";
 }
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-<h2>Index</h2>
+<h2 class="font">Index</h2>
 
-<p>
+<p class="font h4">
     @if (Session["login"] != null)
     {
-        @Html.ActionLink("Create New", "Create")
+        <i class="glyphicon glyphicon-plus h5"></i>
+        @Html.ActionLink("Write a message", "Create")
     }
 </p>
 <div class="table-responsive">
@@ -18,6 +19,7 @@
             <tr>
                 <th class="detailfont h4">Title</th>
                 <th class="detailfont h4">From</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -34,7 +36,7 @@
                 {
                     <td>
                         <a href="@Url.Action("Details", new { id=item.ID})">
-                            <i class="glyphicon glyphicon-eye-open"></i>
+                            <i class="glyphicon glyphicon-eye-open h4"></i>
                         </a>
                     </td>
                 }

@@ -21,12 +21,16 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("All offers", "Index", "Offer")</li>
+                        <li>@Html.ActionLink("Offers", "Index", "Offer")</li>
                         <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         @if (Session["login"] != null)
                         {
-                            <li>@Html.ActionLink("My messages", "Index", "Message")</li>
+                            SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
+                            <li>@Html.ActionLink("Messages", "Index", "Message")</li>
+                            <li>@Html.ActionLink("Users", "Index", "User")</li>
+                            <li>@Html.ActionLink("Me","Details", "User", new { id = current.ID }, null)</li>
+
                         }
                     </ul>
                     <div class="navbar-right">

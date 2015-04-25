@@ -4,31 +4,24 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 <fieldset>
-    <legend>User</legend>
+    <legend class="detailfont h2">@Model.pseudo</legend>
     <div class="pull-left">
-        <div class="display-label h3">firstname</div>
-        <div class="display-field">@Model.firstname</div>
+        <div class="display-label detailfont h3">firstname</div>
+        <div class="display-field font h3">@Model.firstname</div>
 
-        <div class="display-label h3">lastname</div>
-        <div class="display-field">@Model.lastname</div>
+        <div class="display-label detailfont h3">lastname</div>
+        <div class="display-field font h3">@Model.lastname</div>
 
-        <div class="display-label h3">pseudo</div>
-        <div class="display-field">@Model.pseudo</div>
+        <div class="display-label detailfont h3">Birthday</div>
+        <div class="display-field font h3">@String.Format("{0:g}", Model.birthDate)</div>
 
-        <div class="display-label h3">birthDate</div>
-        <div class="display-field">@String.Format("{0:g}", Model.birthDate)</div>
-
-        <div class="display-label h3">phone</div>
-        <div class="display-field">@Model.phone</div>
-
-        <div class="display-label h3">city</div>
-        <div class="display-field">@Model.city</div>
+        <div class="display-label detailfont h3">City</div>
+        <div class="display-field font h3">@Model.city</div>
     </div>
 
-        <div id="googleMap" style="width:500px;height:380px;" class="pull-right"></div>
+        <div id="googleMap" style="width:400px;height:400px;" class="pull-right"></div>
 </fieldset>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
@@ -54,8 +47,18 @@
 
         google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+<p class="font h4">
+    @{
+        SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
+    }
+    @if (current.ID == Model.ID)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) 
+        <label>|</label>
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+        <label>|</label>
+    }
+    
     @Html.ActionLink("Back to List", "Index")
 </p>
 
