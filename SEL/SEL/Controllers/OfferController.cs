@@ -89,6 +89,14 @@ namespace SEL.Controllers
         {
             Offer offer = context.Offer.Single(x => x.ID == id);
             ViewBag.Possibleowner = context.User;
+            ViewBag.tagList = context.Tag.ToList().Select(m => m.tag);
+            List<OfferTag> otList = context.OfferTag.Where(m => m.offerID == offer.ID).ToList();
+            List<string> tagName = new List<string>();
+            foreach (OfferTag ot in otList)
+            {
+                tagName.Add(context.Tag.Find(ot.tagID).tag);
+            }
+            @ViewBag.offerTags = tagName;
             return View(offer);
         }
 
@@ -96,15 +104,47 @@ namespace SEL.Controllers
         // POST: /Offer/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Offer offer)
+        public ActionResult Edit(Offer offer, string[] tagList)
         {
+            User user = Session["login"] as User;
+            offer.ownerID = user.ID;
             if (ModelState.IsValid)
             {
                 context.Entry(offer).State = EntityState.Modified;
                 context.SaveChanges();
+
+                //remove existing tags
+                List<OfferTag> ot = context.OfferTag.Where(m => m.offerID == offer.ID).ToList();
+                foreach (OfferTag offerToDelete in ot)
+                {
+                    context.OfferTag.Remove(offerToDelete);
+                    context.SaveChanges();
+                }
+
+                //add new tags
+                foreach (string strTag in tagList)
+                {
+                    if (strTag != "")
+                    {
+                        Tag tag = context.Tag.Where(m => m.tag == strTag).First();
+                        OfferTag newEntry = new OfferTag();
+                        newEntry.tagID = tag.ID;
+                        newEntry.offerID = offer.ID;
+                        context.OfferTag.Add(newEntry);
+                        context.SaveChanges();
+                    }
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.Possibleowner = context.User;
+            ViewBag.tagList = context.Tag.ToList().Select(m => m.tag);
+            List<OfferTag> otList = context.OfferTag.Where(m => m.offerID == offer.ID).ToList();
+            List<string> tagName = new List<string>();
+            foreach (OfferTag ot in otList)
+            {
+                tagName.Add(context.Tag.Find(ot.tagID).tag);
+            }
+            @ViewBag.offerTags = tagName;
             return View(offer);
         }
 

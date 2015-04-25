@@ -52,16 +52,11 @@
 
 <form>
     <fieldset class="details">
+        
+        @Html.HiddenFor(model => model.latitude, new { data_geo = "lat" })
+        @Html.HiddenFor(model => model.longitude, new { data_geo = "lng" })
 
-        <input id="city" name="name" type="hidden" value="" data-geo="name" />
 
-        <input id="lat" name="latitude" type="hidden" value="" data-geo="lat" />
-
-        <input id="lng" name="longitude" type="hidden" value="" data-geo="lng" />
-
-        <input id="location " name="location" type="hidden" value="" />
-
-        <input id="country" name="country" type="hidden" value="" />
 
     </fieldset>
 </form>
@@ -80,12 +75,10 @@
             types: ["geocode", "establishment"],
         });
         $("#city").geocomplete(function () {
-            initialize();
         });
 
         $("#city").blur(function () {
             $("#geocomplete").trigger("geocode");
-            initialize();
         });
         $("#examples a").click(function () {
             $("#geocomplete").val($(this).text()).trigger("geocode");
@@ -97,14 +90,31 @@
 </script>
 <script>
     $(document).ready(function () {
+        var cpt = 0;
         for (var i = 1; i < 15; i++) {
             $(".tag-" + i).hide();
         }
-        var cpt = 0;
         $("#tag").change(function () {
             cpt++;
             $(".tag-" + cpt).show();
         });
+
+        var offerTags = @Html.Raw(Json.Encode(ViewBag.offerTags));
+        if(offerTags!=null)
+        {
+            for(var i=0;i<offerTags.length;i++)
+            {
+                $(".tag-" + i+" option").filter(function() { 
+                    return ($(this).text() == offerTags[i]); //To select Blue
+                }).prop('selected', true);
+                $(".tag-"+i).show();
+                cpt++;
+            }
+        }
+
+            
+        
+
     });
 </script>
 
