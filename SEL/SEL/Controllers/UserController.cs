@@ -100,7 +100,7 @@ namespace SEL.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             User user = context.User.Single(x => x.ID == id);
-            context.User.Remove(user);
+            context.User.Remove(user);      
             context.SaveChanges();
             return RedirectToAction("Index");
         }

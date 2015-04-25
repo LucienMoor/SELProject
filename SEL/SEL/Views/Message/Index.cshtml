@@ -30,7 +30,7 @@
                     @item.title
                 </td>
                 <td class="font h4">
-                    @Html.DisplayTextFor(_ => item.sender).ToString()
+                    @item.getSenderPseudo(@item.senderID)
                 </td>
                 @if (Session["login"] != null)
                 {
