@@ -31,6 +31,7 @@ namespace SEL.Controllers
         public ViewResult Details(int id)
         {
             Message message = context.Message.Single(x => x.ID == id);
+            @ViewBag.ownerPseudo = context.User.Find(message.senderID).pseudo;
             return View(message);
         }
 

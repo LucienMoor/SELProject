@@ -3,26 +3,16 @@
 @{
     ViewBag.Title = "Details";
 }
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 
-<h2>Details</h2>
+ <legend class="font h3">Message</legend>
+    <div class="display-field font h4" style="font-style: italic">@ViewBag.ownerPseudo write...</div>
+    <div class="bubble">        
+        <div class="display-field detailfont h3">@Model.title</div>
 
-<fieldset>
-    <legend>Message</legend>
-
-    <div class="display-label">message</div>
-    <div class="display-field">@Model.message</div>
-
-    <div class="display-label">title</div>
-    <div class="display-field">@Model.title</div>
-
-    <div class="display-label">sender</div>
-    <div class="display-field">@Html.DisplayTextFor(_ => Model.sender).ToString()</div>
-
-    <div class="display-label">dest</div>
-    <div class="display-field">@Html.DisplayTextFor(_ => Model.dest).ToString()</div>
-</fieldset>
+        <div class="display-field font h4">@Model.message</div>
+    </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
 
