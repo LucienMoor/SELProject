@@ -41,9 +41,9 @@ namespace SEL.Controllers
         {
             ViewBag.Possiblesender = context.User;
             ViewBag.Possibledest = context.User;
+            ViewBag.destUserPseudo=Request.QueryString["destUserPseudo"];
             return View();
         } 
-
         //
         // POST: /Message/Create
 
