@@ -13,10 +13,11 @@
     @Html.LabelFor(model => model.message)
 </div>
 <div class="editor-field">
-    @Html.TextAreaFor(model => model.message, new { htmlAttributes = new { @class = "form-control" } })
+    <p>@ViewBag.destUserPseudo</p>
+    @Html.TextAreaFor(model => model.message, new { htmlAttributes = new { @class = "form-control"} })
     @Html.ValidationMessageFor(model => model.message)
 </div>
 <div class="editor-label">
     dest
-    @Html.TextBox("dest")
+    @Html.TextBox("dest", (string)ViewBag.destUserPseudo, new { @class = "form-control" })
 </div>

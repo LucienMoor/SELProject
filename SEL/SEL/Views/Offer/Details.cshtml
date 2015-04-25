@@ -73,6 +73,7 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Contact", "Create", "Message", new { destUserPseudo=Model.owner.pseudo},null)
 </p>
 
 
