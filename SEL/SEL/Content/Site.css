@@ -50,6 +50,7 @@ textarea {
 .picture{
     width:250px;
     height:auto;
+    background-color: transparent;
 }
 .bubble{
     position: relative;

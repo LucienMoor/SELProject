@@ -66,6 +66,10 @@ namespace SEL.Controllers
                 offer.picture = "~/img/" + file.FileName;
 
             }
+            else
+            {
+                offer.picture = "~/img/gift.png";
+            }
 
             if (ModelState.IsValid)
             {
@@ -123,6 +127,7 @@ namespace SEL.Controllers
                 offer.picture = "~/img/" + file.FileName;
 
             }
+            
             User user = Session["login"] as User;
             offer.ownerID = user.ID;
             if (ModelState.IsValid)
