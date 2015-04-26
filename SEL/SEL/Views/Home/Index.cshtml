@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 
 <h3>@ViewBag.Message</h3>
 <div class="jumbotron transparent">
@@ -11,13 +12,18 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    @foreach (var o in @ViewBag.offer)
+    {
+
+        <div class="font h4">
+            @if (@o.picture != null)
+            {
+                <img src="@Url.Content(@o.picture)" alt="image" class="img-responsive img-thumbnail homepicture" style="margin-bottom:10px;" />
+
+            }
+            @o.name
+        </div>
+    }
     </div>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
