@@ -30,5 +30,7 @@ namespace SEL.Models
         public string password { get; set; }
         public string city { get; set; }
 
+        public virtual ICollection<Offer> offers { get; set; }
+
     }
 }

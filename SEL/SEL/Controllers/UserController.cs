@@ -100,7 +100,21 @@ namespace SEL.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             User user = context.User.Single(x => x.ID == id);
-            context.User.Remove(user);      
+            List<Offer> offersToDelete = context.Offer.Where(m => m.ownerID == user.ID).ToList();
+            foreach (Offer o in offersToDelete)
+            {
+                context.OfferTag.RemoveRange(o.tag);
+            }
+            context.SaveChanges();
+            foreach (Offer o in context.Offer.Where(m => m.ownerID == user.ID))
+            {
+                context.Offer.Remove(o);
+            }
+            foreach (Message msg in context.Message.Where(m => m.senderID == user.ID || m.destID == user.ID))
+            {
+                context.Message.Remove(msg);
+            }
+            context.User.Remove(user);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
