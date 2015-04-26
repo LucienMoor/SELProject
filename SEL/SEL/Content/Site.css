@@ -73,3 +73,8 @@ textarea {
     border-left: 15px solid transparent;
     border-right: 15px solid transparent; 
 }
+.homepicture{
+    width:50px;
+    height:auto;
+    background-color: transparent;
+}

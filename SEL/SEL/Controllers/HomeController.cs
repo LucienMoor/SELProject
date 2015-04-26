@@ -15,6 +15,9 @@ namespace SEL.Controllers
         public ActionResult Index()
         {
             setOffersViewBag();
+            List<Offer> listOffer = sel.Set<Offer>().ToList();
+
+            @ViewBag.offer = listOffer.Skip(Math.Max(0, listOffer.Count() - 5)).Take(5).OrderByDescending(o=>o.ID);
             return View();
         }
 
@@ -46,7 +49,8 @@ namespace SEL.Controllers
                 Session["login"] = user;
             }
             setOffersViewBag();
-
+            List<Offer> listOffer = sel.Set<Offer>().ToList();
+            @ViewBag.offer = listOffer.Skip(Math.Max(0, listOffer.Count() - 5)).Take(5).OrderByDescending(o => o.ID);
             return View("Index");
             
         }
