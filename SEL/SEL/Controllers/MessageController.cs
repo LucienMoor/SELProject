@@ -42,6 +42,13 @@ namespace SEL.Controllers
         {
             ViewBag.Possiblesender = context.User;
             ViewBag.Possibledest = context.User;
+            var tmp = context.Set<User>().ToArray();
+            List<string> users = new List<string>();
+            foreach (User u in tmp)
+            {
+                users.Add(u.pseudo);
+            }
+            ViewBag.nameUsers = users;
             ViewBag.destUserPseudo=Request.QueryString["destUserPseudo"];
             return View();
         } 

@@ -17,7 +17,23 @@
     @Html.TextAreaFor(model => model.message, new { @class = "form-control"})
     @Html.ValidationMessageFor(model => model.message)
 </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script>
+    $(document).ready(function ($) {
+        var nameUsers = @Html.Raw(Json.Encode(ViewBag.nameUsers));
+        var $dest = $('#dest');
+        $dest.autocomplete({
+            source: nameUsers
+        });
+    });
+
+</script>
 <div class="editor-label detailfont h4">
     <p class="detailfont h4">To</p>
     @Html.TextBox("dest", (string)ViewBag.destUserPseudo, new { @class = "form-control" })
 </div>
+
+
