@@ -58,6 +58,8 @@ namespace SEL.Controllers
                 ViewBag.Message = "You are logged in";
                 Session["login"] = user;
             }
+            List<Offer> listOffer = sel.Set<Offer>().ToList();
+            @ViewBag.offer = listOffer.Skip(Math.Max(0, listOffer.Count() - 5)).Take(5).OrderByDescending(o => o.ID);
             return View("Index");
             
         }
