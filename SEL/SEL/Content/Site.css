@@ -34,12 +34,19 @@ textarea {
     z-index: -1;
 }
 .offer{
-    border: 1px solid #F1EBF1;
+    border: 1px solid white;
     border-radius: 5px;
     height: 300px;
     text-align: center;
     align-content: center;
     background-color: #FFF3FF;
+}
+.central-Content{
+    border: 1px solid #F1EBF1;
+    padding: 5em 5em 5em 5em;
+    text-align: center;
+    align-content: center;
+    background-color: #F7F7F9;
 }
 .detailfont{
     font-family: 'Open Sans Condensed', sans-serif;
