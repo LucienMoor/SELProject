@@ -39,19 +39,22 @@
                 }
             </p>
             <p class="font h4">
-                @{
-                    SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
-                }
-                @if (current.ID == Model.ownerID)
+                @if (Session["login"]!=null)
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+                    SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
+                
+                    if (current.ID == Model.ownerID)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+                        <label>|</label>
+                        @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+                        <label>|</label>
+                    }
                     <label>|</label>
-                    @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
-                    <label>|</label>
+                    @Html.ActionLink("Contact owner", "Create", "Message", new { destUserPseudo = Model.owner.pseudo }, null)
                 }
-
-                @Html.ActionLink("Back to List", "Index") <label>|</label>
-                @Html.ActionLink("Contact owner", "Create", "Message", new { destUserPseudo = Model.owner.pseudo }, null)
+                @Html.ActionLink("Back to List", "Index") 
+                
             </p>
 </div>
     <div class="col-md-4">

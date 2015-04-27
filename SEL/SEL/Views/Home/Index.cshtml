@@ -18,8 +18,7 @@
         <div class="font h4">
             @if (@o.picture != null)
             {
-                <img src="@Url.Content(@o.picture)" alt="image" class="img-responsive img-thumbnail homepicture" style="margin-bottom:10px;" />
-
+                <a href="@Url.Action("Details","Offer", new { id=o.ID})"><img src="@Url.Content(@o.picture)" alt="image" class="img-responsive img-thumbnail homepicture" style="margin-bottom:10px;" /></a>
             }
             @o.name
         </div>

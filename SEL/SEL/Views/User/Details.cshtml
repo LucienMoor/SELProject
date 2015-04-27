@@ -48,16 +48,18 @@
         google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <p class="font h4">
-    @{
-        SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
-    }
-    @if (current.ID == Model.ID)
+    @if (Session["login"] != null)
     {
-        @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) 
-        <label>|</label>
-        @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
-        <label>|</label>
+        SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
+        if (current.ID == Model.ID)
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+            <label>|</label>
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+            <label>|</label>
+        }
     }
+   
     
     @Html.ActionLink("Back to List", "Index")
 </p>
