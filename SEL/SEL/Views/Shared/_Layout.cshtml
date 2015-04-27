@@ -36,12 +36,20 @@
                     <div class="navbar-right">
                         @if (Session["login"] == null)
                         {
-                            @Html.Partial("_login")
-
+                            <ul class="nav pull-right">
+                                <li class="dropdown" id="menuLogin">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+                                    <div class="dropdown-menu" style="padding:17px;">
+                                        @Html.Partial("_login")
+                                    </div>
+                                </li>
+                            </ul>
                         }
                         else
                         {
-                            @Html.ActionLink("Logout", "Logout", "Home")
+                            <div style="padding:17px;">
+                                @Html.ActionLink("Logout", "Logout", "Home")
+                            </div>
                         }
                     </div>
                 </div>

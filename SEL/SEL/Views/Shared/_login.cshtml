@@ -1,7 +1,15 @@
-﻿@{Html.BeginForm("Login", "Home");}
-    @Html.TextBox("email", "",new { @placeholder = "email" })
-    @Html.Password("password", "",new { @placeholder = "password" })
-    <button type="submit" class="btn btn-default">Login</button>
-@Html.Label("Or ")
-@Html.ActionLink("Sign up!", "Create", "User")
+﻿@{Html.BeginForm("Login", "Home", new {@class="navbar-form", @role="search" });}
+    <div class="form-group">
+        @Html.TextBox("email", "", new { @placeholder = "email", @class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.Password("password", "", new { @placeholder = "password", @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-default" style="align-content: center;">Login</button>
+    <br />
+    <div class="text-center">
+        @Html.Label("Or ")
+        @Html.ActionLink("Sign up!", "Create", "User")
+    </div>
+
 @{Html.EndForm();}
