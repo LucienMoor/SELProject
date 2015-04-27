@@ -3,38 +3,45 @@
 @{
     ViewBag.Title = "Results";
 }
-
-<h2>Index</h2>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+<h2>Result</h2>
 @Html.Partial("_searchBar", Model)
-<p>
+<p class="font h4">
     @if (Session["login"] != null)
     {
-        @Html.ActionLink("Create New", "Create")
+        <i class="glyphicon glyphicon-plus h5"></i>
+        @Html.ActionLink("Add a new offer", "Create")
     }
 
 </p>
 @foreach (var item in Model)
 {
     <div class="col-md-4">
+
         <div class="container offer">
-            <p>@item.name</p>
-            <p>@item.description</p>
-            <p>@item.city</p>
+            @if (item.picture != null)
+            {
+                <p><a href="@Url.Action("Details", new { id=item.ID})"><img src="@Url.Content(item.picture)" alt="image" class="img-responsive picture" style="margin-top:10px;" /></a></p>
+            }
+
+            <p class="font h2">@item.name</p>
+            <p class="font h3">@item.city</p>
+
+
             @if (Session["login"] != null)
             {
                 <a href="@Url.Action("Details", new { id=item.ID})">
-                    <i class="glyphicon glyphicon-eye-open"></i>
+                    <i class="glyphicon glyphicon-eye-open h4"></i>
                 </a>
-
                 SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
                 if (current.ID == item.ownerID)
                 {
                     <a href="@Url.Action("Edit", new { id=item.ID})">
-                        <i class="glyphicon glyphicon-pencil"></i>
+                        <i class="glyphicon glyphicon-pencil h4"></i>
                     </a>
 
                     <a href="@Url.Action("Delete", new { id=item.ID})">
-                        <i class="glyphicon glyphicon-trash"></i>
+                        <i class="glyphicon glyphicon-trash h4"></i>
                     </a>
                 }
 

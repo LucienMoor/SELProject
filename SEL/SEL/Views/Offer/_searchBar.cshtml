@@ -1,5 +1,5 @@
 ﻿@{Html.BeginForm("Search", "Offer");}
-    @Html.TextBox("search", "Search")
+    @Html.TextBox("search", "",new { @placeholder = "Search..." })
     <button type="submit">
         <span class="glyphicon glyphicon-search form-control-feedback" />
     </button>

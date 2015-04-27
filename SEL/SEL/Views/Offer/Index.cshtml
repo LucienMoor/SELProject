@@ -17,20 +17,25 @@
 </p>
     @foreach (var item in Model)
     {
-        <div class="col-md-4">
+        <div class="col-md-2">
             
                 <div class="container offer">
                     @if (item.picture != null)
                     {
-                        <p><a href="@Url.Action("Details", new { id=item.ID})"><img src="@Url.Content(item.picture)" alt="image" class="img-responsive img-thumbnail picture" style="margin-top:10px;" /></a></p>
+                        <div class="">
+                            <p><a href="@Url.Action("Details", new { id=item.ID})"><img src="@Url.Content(item.picture)" alt="image" class="img-responsive picture" style="margin-top:10px;" /></a></p>
+                        </div>
                     }
 
                     <p class="font h2">@item.name</p>
-                    <p class="font h3">@item.city</p>
+                    <p class="font h4">@item.city</p>
 
 
                     @if (Session["login"] != null)
                     {
+                        <a href="@Url.Action("Details", new { id=item.ID})">
+                            <i class="glyphicon glyphicon-eye-open h4"></i>
+                        </a>
                         SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
                         if (current.ID == item.ownerID)
                         {
