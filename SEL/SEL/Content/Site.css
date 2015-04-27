@@ -40,6 +40,14 @@ textarea {
     align-content: center;
     background-color: #F0D1E0;
 }
+.central-Content{
+    border: 2px solid #60545A;
+    padding: 5em 5em 5em 5em;
+    border-radius: 5em;
+    text-align: center;
+    align-content: center;
+    background-color: #F7F7F9;
+}
 .detailfont{
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: bold;
