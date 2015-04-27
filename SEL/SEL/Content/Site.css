@@ -39,11 +39,14 @@ textarea {
     height: 300px;
     text-align: center;
     align-content: center;
-    background-color: #FFF3FF;
+    background-color: #FAF0F5;
+    margin-bottom: 10px;
 }
 .central-Content{
     border: 1px solid #F1EBF1;
     padding: 5em 5em 5em 5em;
+    border-radius: 5px;
+    margin-top: 50px;
     text-align: center;
     align-content: center;
     background-color: #F7F7F9;
@@ -63,8 +66,8 @@ textarea {
     margin-right: auto;
 }
 .picturedetails{
-    width:300px;
-    height:auto;
+    width:auto;
+    height:300px;
     background-color: transparent;
     margin-left: auto;
     margin-right: auto;
@@ -73,9 +76,9 @@ textarea {
     position: relative;
     padding: 15px;
     margin: 1em 0 3em;
-    border: 2px solid #F0D1E0;
+    border: 2px solid #FFF0FF;
     color: black;
-    background: #F0D1E0;
+    background: #FFF0FF;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -85,7 +88,7 @@ textarea {
     position: absolute;
     left: -15px;
     top: 45px;
-    border-top: 15px solid #F0D1E0;
+    border-top: 15px solid #FFF0FF;
     border-top-color: inherit; 
     border-left: 15px solid transparent;
     border-right: 15px solid transparent; 

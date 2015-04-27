@@ -1,6 +1,10 @@
-﻿@{Html.BeginForm("Search", "Offer");}
-    @Html.TextBox("search", "",new { @placeholder = "Search..." })
-    <button type="submit">
-        <span class="glyphicon glyphicon-search form-control-feedback" />
-    </button>
-@{Html.EndForm();}
+﻿<div class="container">
+    @{Html.BeginForm("Search", "Offer");}
+    <div class="input-group">
+        @Html.TextBox("search", "", new { @placeholder = "Search...", @class = "form-control pull-right" })
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+    </div>
+    @{Html.EndForm();}
+</div>
