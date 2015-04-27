@@ -22,7 +22,6 @@ namespace SEL.Controllers
             List<Message> messages= new List<Message>();
             User user = Session["login"] as User;
             return View(context.Message.Where(m=>m.destID==user.ID).ToList());
-            //return View(context.Message.Include(message => message.sender).Include(message => message.dest).ToList());
         }
 
         //
