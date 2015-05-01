@@ -41,11 +41,11 @@ namespace SEL.Controllers
             User user = sel.User.Where(u => u.password == password && u.email == email).FirstOrDefault();
             if(user == null)
             {
-                ViewBag.Message = "Non valide Password or email";
+                ViewBag.message = "Non valide Password or email";
             }
             else
             {
-                ViewBag.Message = "You are logged in";
+                ViewBag.message = "You are logged in";
                 Session["login"] = user;
             }
             setOffersViewBag();
