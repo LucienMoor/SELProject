@@ -23,8 +23,6 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Offers", "Index", "Offer")</li>
-                        <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         @if (Session["login"] != null)
                         {
                             SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];

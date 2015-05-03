@@ -21,7 +21,18 @@ namespace SEL.Controllers
 
         public ViewResult Index()
         {
-            return View(context.Offer.Where(m => m.endDate.Year >= DateTime.Now.Year && m.endDate.Month >= DateTime.Now.Month && m.endDate.Day >= DateTime.Now.Day).ToList());
+            List<Offer> offers = context.Offer.ToList();
+            List<Offer> validOffers = new List<Offer>();
+            foreach (Offer o in offers)
+            {
+                DateTime dt = o.endDate;
+                if (DateTime.Compare(DateTime.Now,dt)<0)
+                {
+                    validOffers.Add(o);
+                }
+
+            }
+            return View(validOffers);
             //return View(context.Offer.Include(offer => offer.owner).Include(offer => offer.tag).ToList());
         }
 
