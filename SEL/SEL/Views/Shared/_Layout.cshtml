@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <div id="wrap">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -17,7 +18,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("SEL", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    <a href="@Url.Action("Index", "Home")"><img src="~/img/sel.png" alt="image" class="logo" /></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -29,7 +30,7 @@
                             SEL.Models.User current = (SEL.Models.User)HttpContext.Current.Session["login"];
                             <li>@Html.ActionLink("Messages", "Index", "Message")</li>
                             <li>@Html.ActionLink("Users", "Index", "User")</li>
-                            <li>@Html.ActionLink("Me","Details", "User", new { id = current.ID }, null)</li>
+                            <li>@Html.ActionLink("Me", "Details", "User", new { id = current.ID }, null)</li>
 
                         }
                     </ul>
@@ -55,13 +56,20 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <div class="container">
             @RenderBody()
+            </div>
+        </div>
+    <div class="footer">
+        <footer>
 
-        </div>
-        <div class="panel-footer bottom">
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </div>
+            <div class="container">
+                <p style="padding: 20px">&copy; @DateTime.Now.Year - Lucien Moor, Léa von Muralt</p>
+            </div>
+        </footer>
+   </div>
+
+
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
