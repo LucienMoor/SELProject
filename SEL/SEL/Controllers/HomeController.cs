@@ -15,9 +15,6 @@ namespace SEL.Controllers
         public ActionResult Index()
         {
             setOffersViewBag();
-            List<Offer> listOffer = sel.Set<Offer>().ToList();
-
-            @ViewBag.offer = listOffer.Skip(Math.Max(0, listOffer.Count() - 5)).Take(5).OrderByDescending(o=>o.ID);
             return View();
         }
 
@@ -67,15 +64,30 @@ namespace SEL.Controllers
 
         private void setOffersViewBag()
         {
+            //list offer
+            List<Offer> listOffer = sel.Set<Offer>().Where(m => m.endDate.Year >= DateTime.Now.Year && m.endDate.Month >= DateTime.Now.Month && m.endDate.Day >= DateTime.Now.Day).ToList();
+            @ViewBag.offer = listOffer.Skip(Math.Max(0, listOffer.Count() - 5)).Take(5).OrderByDescending(o => o.ID);
+
+            //map offer
             var tmp = sel.Set<Offer>().ToArray();
+            List<Offer> validOffers = new List<Offer>();
+            foreach (Offer o in tmp)
+            {
+                DateTime dt = o.endDate;
+                if (DateTime.Compare(DateTime.Now, dt) < 0)
+                {
+                    validOffers.Add(o);
+                }
+
+            }
             List<double> longitude = new List<double>();
             List<double> latitude = new List<double>();
-            foreach (Offer o in tmp)
+            foreach (Offer o in validOffers)
             {
                 longitude.Add(o.longitude);
                 latitude.Add(o.latitude);
             }
-            @ViewBag.nbOffer = sel.Set<Offer>().ToList().Count;
+            @ViewBag.nbOffer = validOffers.Count;
             @ViewBag.longitude = longitude;
             @ViewBag.latitude = latitude;
         }
